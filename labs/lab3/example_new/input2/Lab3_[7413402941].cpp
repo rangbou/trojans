@@ -21,20 +21,22 @@ class NumberSet{
 public:
 	Number num[10]; 
 	int check_inpendence(NumberSet numa){ 
-		int flag = 1; //flag for no matches
+		int flag = true; //flag for no matches
 		for (int i=0;i<10;i++){ //nested loop to compare each element
 			for (int j=0;j<10;j++){
-				if (flag == 1){ //if no matches then try to find matches
-					if ((num[i].get_value()) == (numa.num[j].get_value())){ //is there a match?
-						flag = 0; //flag = 0 means that there is a match! therefore subsets are independent
-					}
-					else { //return 1 means subsets are not independent 
-						return 1;
-					}
+				if ((num[i].get_value()) == (numa.num[j].get_value())){ //is there a match?
+					flag = false; 
 				}
-				else { //subsets are independent ; return 0 = independent 
-					return 0;
+				else if((num[i].get_value()) != (numa.num[j].get_value())){ // no match!
+					flag = true;
 				}
+				if (flag == false){ //
+				cout <<i << " " << j << " " << flag << "\n";
+				return flag;
+				}
+				//else if (flag == true){
+				//return flag; 
+				//}
 			}
 		}
 	}
@@ -62,14 +64,25 @@ int main () {
 		for(int v=0;v<20;v++){
 			if (w != v){
 				if (valset[w].check_inpendence(valset[v]) == 0){
-					checker = "output Y";
+					checker = "N";
+					break;
 				}
 				else {
-					checker = "output N";
+					checker = "Y";
+					//outputfile << "valset[" << w <<  "] and [" <<  v << "]: " << checker << "\n";
 				}
 			}
 		}
-		outputfile << "valset[" << w << "]: " << checker << "\n";
+		if(checker == "N"){
+		break;
+		}
+	}
+
+	if(checker == "Y"){
+		outputfile << checker << "\n";
+	}
+	else if(checker == "N"){
+		outputfile << checker << "\n";
 	}
 
 	outputfile.close();

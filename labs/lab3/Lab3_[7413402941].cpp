@@ -24,18 +24,17 @@ public:
 		int flag = true; //flag for no matches
 		for (int i=0;i<10;i++){ //nested loop to compare each element
 			for (int j=0;j<10;j++){
-				//if (flag == 1){ //if no matches then try to find matches
-					//cout << i << " " << j << " " << num[i].get_value() << " " << numa.num[j].get_value() << "\n"; 
-					if ((num[i].get_value()) == (numa.num[j].get_value())){ //is there a match?
-						//cout <<i << " " << j << " " << flag << "\n"; //flag = 0 means that there is a match! therefore subsets are independent
-						return false;
-					}
-					else if((num[i].get_value()) != (numa.num[j].get_value())){
-						return true; 
-					}
-				//}
-				//else { //subsets are independent ; return 0 = independent 
-					//return false;
+				if ((num[i].get_value()) == (numa.num[j].get_value())){ //is there a match?
+					flag = false; //return 0 if not independent
+				}
+				else if((num[i].get_value()) != (numa.num[j].get_value())){ // no match!
+					flag = true; //return 1 if independent
+				}
+				if (flag == false){ //
+				return flag;
+				}
+				//else if (flag == true){
+				//return flag; 
 				//}
 			}
 		}
@@ -63,20 +62,29 @@ int main () {
 	for(int w=0;w<20;w++){
 		for(int v=0;v<20;v++){
 			if (w != v){
-				if (valset[w].check_inpendence(valset[v]) == 0){
-					checker = "output Y";
-					outputfile << "valset[" << w <<  "] and [" <<  v << "]: " << checker << "\n";
+				if (valset[w].check_inpendence(valset[v]) == 0){ //if not independent
+					checker = "N";
+					break;
 				}
 				else {
-					checker = "output N";
-					outputfile << "valset[" << w <<  "] and [" <<  v << "]: " << checker << "\n";
+					checker = "Y";
+					//outputfile << "valset[" << w <<  "] and [" <<  v << "]: " << checker << "\n";
 				}
 			}
 		}
+		if(checker == "N"){ //break out of outer for loop if 
+		break;
+		}
+	}
+
+	if(checker == "N"){
+		outputfile << checker << "\n";
+	}
+	else if(checker == "Y"){
+		outputfile << checker << "\n";
 	}
 
 	outputfile.close();
     myfile.close();
     return 0;
 }
-
