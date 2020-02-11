@@ -30,12 +30,9 @@ public:
 				else if((num[i].get_value()) != (numa.num[j].get_value())){ // no match!
 					flag = true; //return 1 if independent
 				}
-				if (flag == false){ //
+				if (flag == false){ 
 				return flag;
 				}
-				//else if (flag == true){
-				//return flag; 
-				//}
 			}
 		}
 	}
@@ -68,7 +65,6 @@ int main () {
 				}
 				else {
 					checker = "Y";
-					//outputfile << "valset[" << w <<  "] and [" <<  v << "]: " << checker << "\n";
 				}
 			}
 		}
