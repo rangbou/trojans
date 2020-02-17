@@ -1,0 +1,20 @@
+Rangfa Bou
+7413402941	
+2/19/20
+EE 355 Lab 4
+
+	The hardest part about this lab was the sort_row function within the class Matrix. I spent a lot of time trying to get my array to sort, and I realized that a big part of my problem was that I didn’t initialize y to 0 for the for loop. I am unsure as to what iteration time is. I just counted how many loops it linear search and my binary search to find FirstNum.
+
+My code: 
+linear_search():
+Instead of using the nested for loop, I wanted to follow the format from the lecture slides, which used a while loop. During my while loop, I would check to see if there is a match for FirstNum, if there is I would increment i, the index in the rows, and i is the last index of the row then I would go to a new row and reinitialize i to 0. When FirstNum was found, I wrote the row index to output.txt and i returned j, the row index. The match was found in the 10th row or index j = 9. The iteration time of linear_search was 92.
+
+sort_row():
+This method was my attempt at bubble sort. I used a nested for loop to compare an element in index i to an element in index j. I set that if element i is less than element j then these two elements will switch places. I’m comparing the same index every time, not necessarily the same element, until I get to the end of my for loop. After the nested for loop, I wrote the sorted array into output.txt. 
+
+binary_search():
+I also used a while loop for binary_search() because I wanted to follow the format from the lecture slides. Since the size of the array is constant, I already know what values my start and end would be. First within the while loop, I calculated i, the middle index of the row. I check to see if FirstNum is the same as the element in the ith array. If it is then I would write the index i and the number of loop iterations into output.txt. If there is no match then there are two options. If FirstNum is larger than the ith element, then I know that I am in the correct half, I just need to move my start to the next index and go back to the top of the while loop. If FirstNum is less than the ith element, then I am in the wrong half.I need to move my end to the ith index and go back to the top of the loop. The match was found in index i = 1. The iteration time of binary search was 2. 
+
+main():
+My main function is fairly simple. I read in the input values the same way as I did in lab 3. I created an array of size 10 and read in values into the array and then stored that array in each row of the matrix. 
+
